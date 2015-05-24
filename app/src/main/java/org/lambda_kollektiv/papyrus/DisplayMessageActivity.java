@@ -29,14 +29,14 @@ public class DisplayMessageActivity extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-   @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_list_view, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
-     @Override
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
          switch (item.getItemId()) {
             case android.R.id.home:

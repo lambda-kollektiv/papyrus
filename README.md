@@ -1,6 +1,10 @@
 # papyrus
 Android note app
 
-## TODO
+## Roadmap
 - [ ] sketch list view
-- [ ] implement stub list
+- [ ] add input bar
+- [ ] add note storage
+- [ ] add list view
+- [ ] add action bar settings
+- [ ] add action bar search
