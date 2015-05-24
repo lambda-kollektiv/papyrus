@@ -9,13 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-public class ListView extends Activity {
+public class NotesActivity extends Activity {
     public final static String EXTRA_MESSAGE = "org.lambda_kollektiv.papyrus.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_view);
+        setContentView(R.layout.activity_notes);
     }
 
     @Override

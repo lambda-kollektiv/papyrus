@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".ListView"
+            android:name=".NotesActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,7 @@
             android:label="@string/title_activity_display_message">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.lambda_kollektiv.papyrus.ListView" />
+                android:value=".NotesActivity" />
         </activity>
     </application>
 

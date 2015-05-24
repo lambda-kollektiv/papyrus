@@ -17,7 +17,7 @@ public class DisplayMessageActivity extends Activity {
 
         // Get message from the intent
         Intent intent = getIntent();
-        String message = intent.getStringExtra(ListView.EXTRA_MESSAGE);
+        String message = intent.getStringExtra(NotesActivity.EXTRA_MESSAGE);
 
         // Create text view
         TextView textView = new TextView(this);
