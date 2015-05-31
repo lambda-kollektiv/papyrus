@@ -1,21 +1,29 @@
 package org.lambda_kollektiv.papyrus;
 
-import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-public class NotesActivity extends Activity {
+import java.util.UUID;
+
+public class MainActivity extends FragmentActivity {
     public final static String EXTRA_MESSAGE = "org.lambda_kollektiv.papyrus.MESSAGE";
+    private NotesDatabaseHelper dbHelper;
+    private SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
+        this.dbHelper = new NotesDatabaseHelper(getBaseContext());
+        this.db = dbHelper.getWritableDatabase();
     }
 
     @Override
@@ -40,11 +48,16 @@ public class NotesActivity extends Activity {
         }
     }
 
-    public void sendMessage(View view){
+    public void storeNote(View view){
         Intent intent = new Intent(this, DisplayMessageActivity.class);
         EditText editText = (EditText) findViewById(R.id.edit_message);
         String message = editText.getText().toString();
         intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
+        ContentValues values = new ContentValues();
+        values.put(NotesContract.NoteEntry.COLUMN_NAME_ENTRY_ID, UUID.randomUUID().toString());
+        values.put(NotesContract.NoteEntry.COLUMN_NAME_TEXT, message);
+        long newRowId;
+        newRowId = db.insert(NotesContract.NoteEntry.TABLE_NAME, "null", values);
+        System.out.println("Stored:" + newRowId);
     }
 }
