@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,9 +22,27 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notes);
+        // initialize database
         this.dbHelper = new NotesDatabaseHelper(getBaseContext());
         this.db = dbHelper.getWritableDatabase();
+
+        // build view
+        setContentView(R.layout.activity_main);
+        if (findViewById(R.id.input_fragment) != null || findViewById(R.id.list_fragment) != null) {
+            if(savedInstanceState != null) {
+                return;
+            }
+
+            InputFragment inputFragment = new InputFragment();
+            NotesFragment notesFragment = new NotesFragment();
+            notesFragment.setArguments(getIntent().getExtras());
+
+            FragmentTransaction transaction =  getSupportFragmentManager().beginTransaction();
+
+            transaction.add(R.id.input_fragment, inputFragment);
+            transaction.add(R.id.list_fragment, notesFragment);
+            transaction.commit();
+        }
     }
 
     @Override

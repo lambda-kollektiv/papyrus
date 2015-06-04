@@ -1,0 +1,22 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent" >
+
+    <FrameLayout
+        android:id="@+id/input_fragment"
+        android:name="org.lambda_kollektiv.papyrus.fragments.InputFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        />
+
+    <FrameLayout
+        android:id="@+id/list_fragment"
+        android:name="org.lambda_kollektiv.papyrus.fragments.NotesFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        />
+
+</LinearLayout>

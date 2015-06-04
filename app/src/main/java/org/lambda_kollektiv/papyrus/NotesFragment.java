@@ -1,20 +1,25 @@
 package org.lambda_kollektiv.papyrus;
 
-import android.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.support.v4.app.ListFragment;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 /**
  * A fragment representing the latest notes list
  */
-public class NotesFragment extends Fragment {
+public class NotesFragment extends ListFragment {
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstaceState){
-        return inflater.inflate(R.layout.note_layout, container, false);
+    public void onActivityCreated(Bundle savedInstanceState) {
+       super.onActivityCreated(savedInstanceState);
+       String[] values = new String[] {"Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrott"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
+        setListAdapter(adapter);
     }
 
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        System.out.println(position);
+    }
 
 }
